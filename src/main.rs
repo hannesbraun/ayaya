@@ -1,9 +1,11 @@
-use fltk::{prelude::*, *};
-use rosc::{OscPacket, OscMessage, OscType};
-use rosc::encoder;
-use std::rc::Rc;
 use std::cell::RefCell;
-use std::net::UdpSocket;
+use std::net::{UdpSocket, TcpStream};
+use std::rc::Rc;
+
+use fltk::{*, prelude::*};
+use rosc::{OscMessage, OscPacket, OscType};
+use rosc::encoder;
+use std::io::Write;
 
 mod mainview;
 
@@ -137,16 +139,27 @@ pub fn send(msg: &RawOscMessage) {
         }
     };
 
+    let addr = format!("{}:{}", msg.host, msg.port);
     match msg.protocol {
         TransportProtocol::TCP => {
-            todo!("not implemented")
+            let socket = TcpStream::connect(addr);
+            let mut socket = if socket.is_ok() {
+                socket.unwrap()
+            } else {
+                dialog::alert_default(&format!("Unable to connect to {}:{}.", msg.host, msg.port));
+                return;
+            };
+            let res = socket.write(&data);
+            if res.is_err() {
+                dialog::alert_default(&res.err().unwrap().to_string());
+            }
         }
         TransportProtocol::UDP => {
             let socket = UdpSocket::bind("0.0.0.0:0").unwrap();
-            socket.send_to(&data, format!("{}:{}", msg.host, msg.port)).or_else(|err| {
-                dialog::alert_default(&err.to_string());
-                Err(err)
-            });
+            let res = socket.send_to(&data, addr);
+            if res.is_err() {
+                dialog::alert_default(&res.err().unwrap().to_string());
+            }
         }
     }
 }
