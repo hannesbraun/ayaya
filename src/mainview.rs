@@ -5,8 +5,6 @@ use fltk::misc::InputChoice;
 use fltk::menu::Choice;
 use fltk::button::ReturnButton;
 use fltk::prelude::*;
-use fltk::image::PngImage;
-use std::path::Path;
 
 pub struct UserInterface {
     pub win: Window,
@@ -22,7 +20,7 @@ pub struct UserInterface {
 
 impl UserInterface {
     pub fn make_window() -> Self {
-        let mut win = Window::new(2996, 871, 400, 300, "Main View");
+        let mut win = Window::new(2996, 871, 400, 205, "Ayaya");
         win.end();
         win.show();
 
@@ -49,7 +47,7 @@ impl UserInterface {
         osc_type.set_value(0);
         osc_type.set_down_frame(FrameType::BorderBox);
         win.add(&osc_type);
-        let send = ReturnButton::new(325, 265, 65, 25, "Send");
+        let send = ReturnButton::new(325, 170, 65, 25, "Send");
         win.add(&send);
 
         Self { win, host, port, protocol, addr, value, osc_type, send }
