@@ -3,6 +3,7 @@ use rosc::{OscPacket, OscMessage, OscType};
 use rosc::encoder;
 use std::rc::Rc;
 use std::cell::RefCell;
+use std::net::UdpSocket;
 
 mod mainview;
 
@@ -72,7 +73,7 @@ fn main() {
 
     {
         let ui_data = Rc::clone(&ui_data);
-        ui.protocol.set_callback(move |osc_type| (*ui_data.borrow_mut()).osc_type = OscTypeTag::from(&osc_type.choice().unwrap()));
+        ui.osc_type.set_callback(move |osc_type| (*ui_data.borrow_mut()).osc_type = OscTypeTag::from(&osc_type.choice().unwrap()));
     }
     match &ui_data.borrow().osc_type {
         OscTypeTag::Int32 => ui.osc_type.set_value(0),
@@ -125,6 +126,19 @@ pub fn send(msg: &RawOscMessage) {
             return;
         }
     };
+
+    match msg.protocol {
+        TransportProtocol::TCP => {
+            todo!("not implemented")
+        }
+        TransportProtocol::UDP => {
+            let socket = UdpSocket::bind("0.0.0.0:0").unwrap();
+            socket.send_to(&data, format!("{}:{}", msg.host, msg.port)).or_else(|err| {
+                dialog::alert_default(&err.to_string());
+                Err(err)
+            });
+        }
+    }
 }
 
 pub enum TransportProtocol {
