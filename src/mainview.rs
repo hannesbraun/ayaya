@@ -45,7 +45,7 @@ impl UserInterface {
         osc_type.end();
         osc_type.add_choice("int32");
         osc_type.add_choice("float32");
-        osc_type.add_choice("OSC-String");
+        osc_type.add_choice("OSC-string");
         osc_type.set_value(0);
         osc_type.set_down_frame(FrameType::BorderBox);
         win.add(&osc_type);
