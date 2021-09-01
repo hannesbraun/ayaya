@@ -1,10 +1,11 @@
-use fltk::enums::FrameType;
-use fltk::window::Window;
-use fltk::input::Input;
-use fltk::misc::InputChoice;
-use fltk::menu::Choice;
+use fltk::app;
 use fltk::button::ReturnButton;
+use fltk::enums::FrameType;
+use fltk::input::Input;
+use fltk::menu::Choice;
+use fltk::misc::InputChoice;
 use fltk::prelude::*;
+use fltk::window::Window;
 
 pub struct UserInterface {
     pub win: Window,
@@ -20,7 +21,8 @@ pub struct UserInterface {
 
 impl UserInterface {
     pub fn make_window() -> Self {
-        let mut win = Window::new(2996, 871, 400, 205, "Ayaya");
+        let screen_dimensions = app::screen_xywh(0);
+        let mut win = Window::new((screen_dimensions.2 - 400) / 2, (screen_dimensions.3 - 205) / 2, 400, 205, "Ayaya");
         win.end();
         win.show();
 
