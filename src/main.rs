@@ -128,8 +128,8 @@ pub fn send(msg: &RawOscMessage) {
 }
 
 pub enum TransportProtocol {
-    TCP = 0,
-    UDP = 1,
+    TCP,
+    UDP,
 }
 
 impl TransportProtocol {
