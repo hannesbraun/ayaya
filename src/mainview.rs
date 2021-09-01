@@ -26,24 +26,30 @@ impl UserInterface {
         win.end();
         win.show();
 
-        let mut host = Input::new(45, 11, 115, 24, "Host:");
+        let host = Input::new(45, 11, 115, 24, "Host:");
         win.add(&host);
-        let mut port = Input::new(205, 11, 55, 24, "Port:");
+        let port = Input::new(205, 11, 55, 24, "Port:");
         win.add(&port);
         let mut protocol = Choice::new(325, 10, 65, 25, "Protocol:");
         protocol.end();
         protocol.add_choice("TCP");
         protocol.add_choice("UDP");
-        protocol.set_item(&protocol.at(1).unwrap());
+        protocol.set_value(1);
         protocol.set_down_frame(FrameType::BorderBox);
         win.add(&protocol);
-        let mut addr = InputChoice::new(100, 61, 290, 24, "OSC Address:");
+        let addr = InputChoice::new(100, 61, 290, 24, "OSC Address:");
         win.add(&addr);
-        let mut value = Input::new(100, 91, 290, 24, "Value:");
+        let value = Input::new(100, 91, 290, 24, "Value:");
         win.add(&value);
         let mut osc_type = Choice::new(100, 121, 290, 24, "Type:");
+        osc_type.end();
+        osc_type.add_choice("int32");
+        osc_type.add_choice("float32");
+        osc_type.add_choice("OSC-String");
+        osc_type.set_value(0);
+        osc_type.set_down_frame(FrameType::BorderBox);
         win.add(&osc_type);
-        let mut send = ReturnButton::new(325, 265, 65, 25, "Send");
+        let send = ReturnButton::new(325, 265, 65, 25, "Send");
         win.add(&send);
 
         Self { win, host, port, protocol, addr, value, osc_type, send }

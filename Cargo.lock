@@ -12,9 +12,9 @@ dependencies = [
 
 [[package]]
 name = "bitflags"
-version = "1.2.1"
+version = "1.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
+checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 
 [[package]]
 name = "byteorder"
@@ -39,23 +39,21 @@ dependencies = [
 
 [[package]]
 name = "fltk"
-version = "1.0.19"
+version = "1.1.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c65a2f933e5e7eb0d7d45eeeeba20636b26321ef54548125b28b22c601f4b7db"
+checksum = "75a7e297a9b729d5ac4720380e7ef4707513d24752858b830ca4807e65d2e725"
 dependencies = [
  "bitflags",
  "fltk-derive",
  "fltk-sys",
- "lazy_static",
- "objc",
  "raw-window-handle",
 ]
 
 [[package]]
 name = "fltk-derive"
-version = "1.0.19"
+version = "1.1.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "70dd0e88926d3756e3077832bdb3c01ce0185167c80de9498b25620079136102"
+checksum = "3da44d0033698ef1f05f7e30a7f0b8065c63c2d366b6155c5c56c0503586b5c9"
 dependencies = [
  "quote",
  "syn",
@@ -63,43 +61,18 @@ dependencies = [
 
 [[package]]
 name = "fltk-sys"
-version = "1.0.19"
+version = "1.1.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7d4741c0fa159ff01ae599e78c9c4478f6134f6601d215230bfa5f90f92e1830"
+checksum = "ab78eb85ceb376e5e55e9bd4beb9230996d86eb606b6993b6fc50510dc17787b"
 dependencies = [
  "cmake",
- "libc",
 ]
-
-[[package]]
-name = "lazy_static"
-version = "1.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libc"
 version = "0.2.97"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "12b8adadd720df158f4d70dfe7ccc6adb0472d7c55ca83445f6a5ab3e36f8fb6"
-
-[[package]]
-name = "malloc_buf"
-version = "0.0.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "62bb907fe88d54d8d9ce32a3cceab4218ed2f6b7d35617cafe9adf84e43919cb"
-dependencies = [
- "libc",
-]
-
-[[package]]
-name = "objc"
-version = "0.2.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "915b1b472bc21c53464d6c8461c9d3af805ba1ef837e1cac254428f4a77177b1"
-dependencies = [
- "malloc_buf",
-]
 
 [[package]]
 name = "proc-macro2"
