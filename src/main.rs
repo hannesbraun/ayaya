@@ -1,15 +1,13 @@
 use fltk::{prelude::*, *};
 use rosc::{OscPacket, OscMessage, OscType};
 use rosc::encoder;
-use crate::mainview::UserInterface;
 use std::rc::Rc;
 use std::cell::RefCell;
-use std::any::Any;
 
 mod mainview;
 
 fn main() {
-    let mut ui_data = Rc::new(RefCell::new(
+    let ui_data = Rc::new(RefCell::new(
         RawOscMessage {
             host: "127.0.0.1".to_string(),
             port: 7321,
