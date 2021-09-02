@@ -13,6 +13,12 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Download dependencies
+        run: |
+          if [ "$RUNNER_OS" == "Linux" ]; then
+           sudo apt-get update && sudo apt-get install -y libpango1.0-dev libx11-dev libxext-dev libxft-dev libxinerama-dev libxcursor-dev libxrender-dev libxfixes-dev libpng-dev
+          fi
+        shell: bash
       - uses: actions/checkout@v2
       - name: Build
         run: cargo build --verbose
