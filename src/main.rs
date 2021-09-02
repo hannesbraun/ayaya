@@ -92,44 +92,8 @@ fn main() {
 }
 
 pub fn send(msg: &RawOscMessage) {
-    let packet = if !msg.value.is_empty() {
-        let value = match msg.osc_type {
-            OscTypeTag::Int32 => {
-                match msg.value.parse() {
-                    Ok(res) => OscType::Int(res),
-                    Err(_) => {
-                        dialog::alert_default("This value is not a 32-bit signed integer.");
-                        return;
-                    }
-                }
-            }
-            OscTypeTag::Float32 => {
-                match msg.value.parse() {
-                    Ok(res) => OscType::Float(res),
-                    Err(_) => {
-                        dialog::alert_default("This value is not a 32-bit floating point number.");
-                        return;
-                    }
-                }
-            }
-            OscTypeTag::OscString => OscType::String(msg.value.clone()),
-        };
-
-        OscPacket::Message(
-            OscMessage {
-                addr: msg.osc_address.clone(),
-                args: vec![value],
-            }
-        )
-    } else {
-        // No value present
-        OscPacket::Message(
-            OscMessage {
-                addr: msg.osc_address.clone(),
-                args: Vec::new(),
-            }
-        )
-    };
+    let packet = msg.to_packet();
+    let packet = if packet.is_some() { packet.unwrap() } else { return; };
 
     let data = match encoder::encode(&packet) {
         Ok(data) => data,
@@ -203,4 +167,47 @@ pub struct RawOscMessage {
     pub osc_address: String,
     pub value: String,
     pub osc_type: OscTypeTag,
+}
+
+impl RawOscMessage {
+    fn to_packet(&self) -> Option<OscPacket> {
+        if !self.value.is_empty() {
+            let value = match self.osc_type {
+                OscTypeTag::Int32 => {
+                    match self.value.parse() {
+                        Ok(res) => OscType::Int(res),
+                        Err(_) => {
+                            dialog::alert_default("This value is not a 32-bit signed integer.");
+                            return None;
+                        }
+                    }
+                }
+                OscTypeTag::Float32 => {
+                    match self.value.parse() {
+                        Ok(res) => OscType::Float(res),
+                        Err(_) => {
+                            dialog::alert_default("This value is not a 32-bit floating point number.");
+                            return None;
+                        }
+                    }
+                }
+                OscTypeTag::OscString => OscType::String(self.value.clone()),
+            };
+
+            Some(OscPacket::Message(
+                OscMessage {
+                    addr: self.osc_address.clone(),
+                    args: vec![value],
+                }
+            ))
+        } else {
+            // No value present
+            Some(OscPacket::Message(
+                OscMessage {
+                    addr: self.osc_address.clone(),
+                    args: Vec::new(),
+                }
+            ))
+        }
+    }
 }
