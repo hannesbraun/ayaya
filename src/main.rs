@@ -1,15 +1,26 @@
 use std::cell::RefCell;
-use std::net::{UdpSocket, TcpStream};
+use std::io::Write;
+use std::net::{TcpStream, UdpSocket};
 use std::rc::Rc;
 
 use fltk::{*, prelude::*};
 use rosc::{OscMessage, OscPacket, OscType};
 use rosc::encoder;
-use std::io::Write;
 
 mod mainview;
 
+const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+
+fn welcome() {
+    println!("Ayaya {}", VERSION);
+    println!("Copyright (c) 2021, Hannes Braun");
+    println!("Ayaya is licensed under the Boost Software License 1.0");
+    println!();
+}
+
 fn main() {
+    welcome();
+
     let ui_data = Rc::new(RefCell::new(
         RawOscMessage {
             host: "127.0.0.1".to_string(),
