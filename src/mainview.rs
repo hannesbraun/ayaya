@@ -18,11 +18,16 @@ pub struct UserInterface {
     pub send: ReturnButton,
 }
 
-
 impl UserInterface {
     pub fn make_window() -> Self {
         let screen_dimensions = app::screen_xywh(0);
-        let mut win = Window::new((screen_dimensions.2 - 400) / 2, (screen_dimensions.3 - 205) / 2, 400, 205, "Ayaya");
+        let mut win = Window::new(
+            (screen_dimensions.2 - 400) / 2,
+            (screen_dimensions.3 - 205) / 2,
+            400,
+            205,
+            "Ayaya",
+        );
         win.end();
         win.show();
 
@@ -52,6 +57,15 @@ impl UserInterface {
         let send = ReturnButton::new(325, 170, 65, 25, "Send");
         win.add(&send);
 
-        Self { win, host, port, protocol, addr, value, osc_type, send }
+        Self {
+            win,
+            host,
+            port,
+            protocol,
+            addr,
+            value,
+            osc_type,
+            send,
+        }
     }
 }
