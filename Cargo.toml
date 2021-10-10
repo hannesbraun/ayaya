@@ -5,5 +5,5 @@ authors = ["Hannes Braun <hannesbraun@mail.de>"]
 edition = "2018"
 
 [dependencies]
-fltk = "1.1.15"
+fltk = "1.2.7"
 rosc = "0.5.2"
