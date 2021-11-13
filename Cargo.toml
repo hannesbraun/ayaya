@@ -2,7 +2,7 @@
 name = "ayaya"
 version = "0.1.0"
 authors = ["Hannes Braun <hannesbraun@mail.de>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 fltk = "1.2.7"
