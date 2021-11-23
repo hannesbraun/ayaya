@@ -17,6 +17,11 @@ cargo build --release
 
 You will find the executable called `ayaya` within `target/release/`.
 
+Using [cargo-bundle](https://github.com/burtonageo/cargo-bundle), you can also create an OS-specific app bundle (e.g. for macOS) with:
+```bash
+cargo bundle --release
+```
+
 ## Contributors
 
 - [Hannes Braun](https://github.com/hannesbraun) - creator and maintainer

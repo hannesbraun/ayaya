@@ -3,7 +3,13 @@ name = "ayaya"
 version = "0.1.0"
 authors = ["Hannes Braun <hannesbraun@mail.de>"]
 edition = "2021"
+description = "Testing tool for the Open Sound Control protocol"
 
 [dependencies]
 fltk = "1.2.7"
 rosc = "0.5.2"
+
+[package.metadata.bundle]
+name = "Ayaya"
+identifier = "net.hannesbraun.halkara"
+copyright = "Copyright (c) 2021, Hannes Braun"
