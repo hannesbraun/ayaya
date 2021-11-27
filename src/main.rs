@@ -3,9 +3,10 @@ use std::io::Write;
 use std::net::{TcpStream, UdpSocket};
 use std::rc::Rc;
 
-use fltk::{*, prelude::*};
-use rosc::{OscMessage, OscPacket, OscType};
+use fltk::menu::mac_set_about;
+use fltk::{prelude::*, *};
 use rosc::encoder;
+use rosc::{OscMessage, OscPacket, OscType};
 
 mod mainview;
 
@@ -106,6 +107,11 @@ fn main() {
         let ui_data = Rc::clone(&ui_data);
         ui.send.set_callback(move |_| send(&*ui_data.borrow()));
     }
+
+    mac_set_about(move || {
+        dialog::message_title("About Ayaya");
+        dialog::message_default(&copyright_header());
+    });
 
     app.run().unwrap();
 }

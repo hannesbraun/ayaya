@@ -1,12 +1,12 @@
 [package]
 name = "ayaya"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Hannes Braun <hannesbraun@mail.de>"]
 edition = "2021"
 description = "Testing tool for the Open Sound Control protocol"
 
 [dependencies]
-fltk = "1.2.7"
+fltk = "1.2.18"
 rosc = "0.5.2"
 
 [package.metadata.bundle]

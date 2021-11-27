@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "ayaya"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "fltk",
  "rosc",
@@ -39,9 +39,9 @@ dependencies = [
 
 [[package]]
 name = "fltk"
-version = "1.2.7"
+version = "1.2.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0953c34fd5b0c6ac1b615fdcda8845c81ed364165b115ddac46ae8953d456640"
+checksum = "bdd28da73770760dc005fcdb749b45331c7637d4c1f042054c567c98863790fe"
 dependencies = [
  "bitflags",
  "fltk-sys",
@@ -50,9 +50,9 @@ dependencies = [
 
 [[package]]
 name = "fltk-sys"
-version = "1.2.7"
+version = "1.2.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e2df700440c014123cc1644fbef7d33dcdda18cdd80373a7552a9d5cec47ca63"
+checksum = "6818e7d90bac21472f79908e358390552755684bfce9332ae08db0f9415418ac"
 dependencies = [
  "cmake",
 ]
