@@ -11,5 +11,5 @@ rosc = "0.5.2"
 
 [package.metadata.bundle]
 name = "Ayaya"
-identifier = "net.hannesbraun.halkara"
+identifier = "net.hannesbraun.ayaya"
 copyright = "Copyright (c) 2021, Hannes Braun"
