@@ -77,7 +77,7 @@ fn main() {
                 }
                 None => {
                     addr.set_value_index(0);
-                    (*ui_data.borrow_mut()).osc_address = addr.value().unwrap_or("".to_string())
+                    (*ui_data.borrow_mut()).osc_address = addr.value().unwrap_or_default()
                 }
             }
         });
