@@ -118,8 +118,8 @@ fn main() {
 
 pub fn send(msg: &RawOscMessage) {
     let packet = msg.to_packet();
-    let packet = if packet.is_some() {
-        packet.unwrap()
+    let packet = if let Some(packet) = packet {
+        packet
     } else {
         return;
     };
@@ -136,8 +136,8 @@ pub fn send(msg: &RawOscMessage) {
     match msg.protocol {
         TransportProtocol::TCP => {
             let socket = TcpStream::connect(addr);
-            let mut socket = if socket.is_ok() {
-                socket.unwrap()
+            let mut socket = if let Ok(socket) = socket {
+                socket
             } else {
                 dialog::alert_default(&format!("Unable to connect to {}:{}.", msg.host, msg.port));
                 return;
