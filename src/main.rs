@@ -10,7 +10,7 @@ use rosc::{OscMessage, OscPacket, OscType};
 
 mod mainview;
 
-const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 fn copyright_header() -> String {
     format!(
