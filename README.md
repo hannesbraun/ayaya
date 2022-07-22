@@ -28,6 +28,6 @@ cargo bundle --release
 
 ## License
 
-Copyright (c) 2021, Hannes Braun
+Copyright (c) 2021-2022, Hannes Braun
 
 Ayaya is licensed under the Boost Software License 1.0. For more information, see [LICENSE](LICENSE).

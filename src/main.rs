@@ -15,7 +15,7 @@ const VERSION: &str = env!("CARGO_PKG_VERSION");
 fn copyright_header() -> String {
     format!(
         "Ayaya {}
-Copyright (c) 2021, Hannes Braun
+Copyright (c) 2021-2022, Hannes Braun
 Ayaya is licensed under the Boost Software License 1.0",
         VERSION
     )
