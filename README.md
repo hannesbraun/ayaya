@@ -22,6 +22,19 @@ Using [cargo-bundle](https://github.com/burtonageo/cargo-bundle), you can also c
 cargo bundle --release
 ```
 
+## Usage
+
+If you open the application, you should be presented with this main window:
+![Main window of Ayaya](images/main.png "Main window")
+
+This allows you to send an OSC message to a receiver of your choice. Enter the destination in the first line, then add the OSC address, the value to send and the data type of the value entered.
+Currently, only the following OSC data types are supported:
+* int32
+* float32
+* OSC-string
+
+When you're done, click send (or hit the enter key) and your message will be sent.
+
 ## Contributors
 
 - [Hannes Braun](https://github.com/hannesbraun) - creator and maintainer
