@@ -1,12 +1,14 @@
-use easy::{OscTypeTag, RawOscMessage, TransportProtocol};
+use easy::{OscTypeTag, RawOscMessage};
 use fltk::menu::mac_set_about;
 use fltk::*;
+use util::TransportProtocol;
 
 mod dumpview;
 mod easy;
 mod mainview;
 mod menubar;
 mod replayview;
+mod util;
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 

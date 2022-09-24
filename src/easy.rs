@@ -2,6 +2,7 @@ use fltk::dialog;
 use rosc::{encoder, OscMessage, OscPacket, OscType};
 use std::io::Write;
 use std::net::{TcpStream, UdpSocket};
+use crate::util::TransportProtocol;
 
 pub fn send(msg: &RawOscMessage) {
     let packet = msg.to_packet();
@@ -40,21 +41,6 @@ pub fn send(msg: &RawOscMessage) {
             if res.is_err() {
                 dialog::alert_default(&res.err().unwrap().to_string());
             }
-        }
-    }
-}
-
-pub enum TransportProtocol {
-    Tcp,
-    Udp,
-}
-
-impl TransportProtocol {
-    pub fn from(val: &str) -> TransportProtocol {
-        match val {
-            "TCP" => TransportProtocol::Tcp,
-            "UDP" => TransportProtocol::Udp,
-            _ => TransportProtocol::Udp,
         }
     }
 }
