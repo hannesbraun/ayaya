@@ -19,6 +19,6 @@ jobs:
            sudo apt-get update && sudo apt-get install -y libpango1.0-dev libx11-dev libxext-dev libxft-dev libxinerama-dev libxcursor-dev libxrender-dev libxfixes-dev libpng-dev
           fi
         shell: bash
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build
         run: cargo build --verbose
